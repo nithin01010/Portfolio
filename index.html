@@ -1,0 +1,1738 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nithin Venkata Sai Myneni | Full Stack Engineer & Backend Architect</title>
+    
+    <!-- Meta SEO -->
+    <meta name="description" content="Portfolio of Nithin Venkata Sai Myneni - Full Stack Engineer, Backend & Cloud Developer, and Competitive Programmer with 2000+ solved problems.">
+    <meta name="keywords" content="Nithin Venkata Sai Myneni, Backend Engineer, Full Stack Developer, FastAPI, PostgreSQL, Redis, Docker, Competitive Programming, IIT Madras">
+    <meta name="author" content="Nithin Venkata Sai Myneni">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace']
+                    },
+                    colors: {
+                        dark: {
+                            950: '#040407',
+                            900: '#090a10',
+                            850: '#0e101a',
+                            800: '#141724',
+                            750: '#1b1f30',
+                            700: '#252b42',
+                            border: '#262b40'
+                        },
+                        purple: {
+                            400: '#c084fc',
+                            500: '#a855f7',
+                            600: '#9333ea',
+                            700: '#7e22ce',
+                            glow: 'rgba(168, 85, 247, 0.45)'
+                        }
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'gradient-x': 'gradient-x 8s ease infinite',
+                        'spin-slow': 'spin 12s linear infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        'gradient-x': {
+                            '0%, 100%': { 'background-size': '200% 200%', 'background-position': 'left center' },
+                            '50%': { 'background-size': '200% 200%', 'background-position': 'right center' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Font Awesome 6 Free CDN (for complete Brands & System Icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        /* Custom Base & Scrollbar */
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #050508;
+            color: #e2e8f0;
+            overflow-x: hidden;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            selection-background-color: #9333ea;
+            selection-color: #ffffff;
+        }
+
+        ::selection {
+            background: #7e22ce;
+            color: #ffffff;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #07070b;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #232538;
+            border-radius: 9999px;
+            border: 2px solid #07070b;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #7e22ce;
+        }
+
+        /* Ambient Glow & Gradients */
+        .ambient-glow {
+            position: absolute;
+            width: 550px;
+            height: 550px;
+            border-radius: 50%;
+            filter: blur(140px);
+            pointer-events: none;
+            opacity: 0.22;
+            z-index: 0;
+        }
+
+        .ambient-purple {
+            background: radial-gradient(circle, #9333ea 0%, #4c1d95 60%, transparent 80%);
+        }
+
+        .ambient-blue {
+            background: radial-gradient(circle, #3b82f6 0%, #1e1b4b 60%, transparent 80%);
+        }
+
+        /* Glassmorphism */
+        .glass-card {
+            background: rgba(14, 16, 26, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(168, 85, 247, 0.35);
+            box-shadow: 0 12px 35px -10px rgba(147, 51, 234, 0.22), 0 0 0 1px rgba(168, 85, 247, 0.15);
+            transform: translateY(-4px);
+        }
+
+        .glass-nav {
+            background: rgba(8, 9, 14, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* Text Gradients */
+        .text-gradient-purple {
+            background: linear-gradient(135deg, #ffffff 15%, #d8b4fe 55%, #a855f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .text-gradient-subtle {
+            background: linear-gradient(135deg, #f1f5f9 0%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Glow Elements */
+        .glow-button {
+            position: relative;
+            background: linear-gradient(135deg, #9333ea, #6b21a8);
+            box-shadow: 0 0 25px -4px rgba(168, 85, 247, 0.45);
+            transition: all 0.3s ease;
+        }
+
+        .glow-button:hover {
+            box-shadow: 0 0 35px 2px rgba(168, 85, 247, 0.65);
+            transform: scale(1.02);
+        }
+
+        .badge-purple {
+            background: rgba(147, 51, 234, 0.12);
+            border: 1px solid rgba(168, 85, 247, 0.25);
+            color: #d8b4fe;
+        }
+
+        .badge-purple:hover {
+            background: rgba(147, 51, 234, 0.22);
+            border-color: rgba(168, 85, 247, 0.45);
+            color: #ffffff;
+        }
+
+        /* Interactive Grid Pattern Background */
+        .grid-bg {
+            background-image: radial-gradient(rgba(147, 51, 234, 0.12) 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+
+        /* Code block styling */
+        .code-window {
+            background: #08090e;
+            border: 1px solid #1c2030;
+            border-radius: 12px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Toast notification */
+        #toast {
+            visibility: hidden;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        #toast.show {
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="relative min-h-screen bg-dark-950 text-slate-200 antialiased overflow-x-hidden">
+
+    <!-- Interactive Background Canvas -->
+    <canvas id="bg-canvas" class="fixed inset-0 pointer-events-none z-0 opacity-40"></canvas>
+
+    <!-- Ambient Purple/Indigo Lighting Orbs -->
+    <div class="ambient-glow ambient-purple top-[-100px] left-[-100px]"></div>
+    <div class="ambient-glow ambient-blue top-[30%] right-[-150px]"></div>
+    <div class="ambient-glow ambient-purple bottom-[15%] left-[10%]"></div>
+    <div class="ambient-glow ambient-purple bottom-[-100px] right-[-100px]"></div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 flex items-center space-x-3 px-4 py-3 rounded-xl bg-dark-850 border border-purple-500/40 text-purple-200 shadow-2xl shadow-purple-950/80 backdrop-blur-xl">
+        <i data-lucide="check-circle-2" class="w-5 h-5 text-purple-400 shrink-0"></i>
+        <span id="toast-message" class="text-sm font-medium">Copied to clipboard!</span>
+    </div>
+
+    <!-- Header / Sticky Navigation Bar -->
+    <header class="fixed top-0 left-0 right-0 z-40 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
+            
+            <!-- Brand Logo -->
+            <a href="#hero" class="flex items-center space-x-2.5 group">
+                <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-purple-700 via-purple-600 to-indigo-500 flex items-center justify-center text-white font-mono font-bold text-sm shadow-md shadow-purple-900/40 group-hover:scale-105 transition-transform duration-300">
+                    NM
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-bold text-base sm:text-lg tracking-tight text-white group-hover:text-purple-300 transition-colors">
+                        Nithin Myneni
+                    </span>
+                    <span class="text-[10px] font-mono text-purple-400 tracking-wider">FULL STACK & CLOUD</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center space-x-1 lg:space-x-2 text-sm font-medium text-slate-300">
+                <a href="#about" class="px-3 py-1.5 rounded-lg hover:text-white hover:bg-white/5 transition-all">About</a>
+                <a href="#experience" class="px-3 py-1.5 rounded-lg hover:text-white hover:bg-white/5 transition-all">Experience</a>
+                <a href="#projects" class="px-3 py-1.5 rounded-lg hover:text-white hover:bg-white/5 transition-all">Projects</a>
+                <a href="#skills" class="px-3 py-1.5 rounded-lg hover:text-white hover:bg-white/5 transition-all">Skills</a>
+                <a href="#profiles" class="px-3 py-1.5 rounded-lg hover:text-white hover:bg-white/5 transition-all">Profiles</a>
+                <a href="#awards" class="px-3 py-1.5 rounded-lg hover:text-white hover:bg-white/5 transition-all">Awards</a>
+            </nav>
+
+            <!-- Action Buttons -->
+            <div class="hidden sm:flex items-center space-x-3">
+                <a href="mailto:nithinmyneni010@gmail.com" class="px-4 py-2 text-xs font-semibold rounded-xl bg-dark-800 hover:bg-dark-750 text-slate-200 border border-slate-700/60 hover:border-purple-500/50 transition-all flex items-center space-x-2">
+                    <i data-lucide="mail" class="w-3.5 h-3.5 text-purple-400"></i>
+                    <span>Contact</span>
+                </a>
+                <a href="#contact" class="glow-button px-4 py-2 text-xs font-semibold rounded-xl text-white flex items-center space-x-1.5">
+                    <span>Let's Talk</span>
+                    <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+                </a>
+            </div>
+
+            <!-- Mobile Hamburger Button -->
+            <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 focus:outline-none" aria-label="Toggle Navigation Menu">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-dark-900/95 border-b border-dark-border px-4 pt-2 pb-6 space-y-2 backdrop-blur-xl">
+            <a href="#about" class="mobile-nav-link block px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-purple-600/10">About</a>
+            <a href="#experience" class="mobile-nav-link block px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-purple-600/10">Experience</a>
+            <a href="#projects" class="mobile-nav-link block px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-purple-600/10">Projects</a>
+            <a href="#skills" class="mobile-nav-link block px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-purple-600/10">Skills</a>
+            <a href="#profiles" class="mobile-nav-link block px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-purple-600/10">Profiles</a>
+            <a href="#awards" class="mobile-nav-link block px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-purple-600/10">Awards</a>
+            <div class="pt-3 flex gap-2">
+                <a href="mailto:nithinmyneni010@gmail.com" class="flex-1 text-center py-2.5 rounded-xl bg-dark-800 text-xs font-semibold border border-purple-500/30 text-purple-300">
+                    Email Me
+                </a>
+                <a href="#contact" class="flex-1 text-center py-2.5 rounded-xl glow-button text-xs font-semibold text-white">
+                    Get in Touch
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="relative z-10 pt-20">
+
+        <!-- ========================================================================= -->
+        <!-- HERO SECTION                                                              -->
+        <!-- ========================================================================= -->
+        <section id="hero" class="relative min-h-[92vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+            <div class="max-w-5xl mx-auto text-center flex flex-col items-center">
+                
+                <!-- Status Badge -->
+                <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-purple-950/40 border border-purple-500/30 text-purple-300 text-xs font-medium mb-8 backdrop-blur-md animate-float">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 -ml-3"></span>
+                    <span>Available for Full-Time & Internship Opportunities</span>
+                </div>
+
+                <!-- Main Name Header -->
+                <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight mb-4">
+                    <span class="text-white">Hi, I'm </span>
+                    <span class="text-gradient-purple">Nithin Venkata Sai</span>
+                </h1>
+
+                <!-- Dynamic Rotating Subheading -->
+                <div class="h-10 sm:h-12 flex items-center justify-center font-mono text-base sm:text-xl md:text-2xl text-purple-300 font-semibold mb-6">
+                    <span class="text-slate-400 mr-2">&gt;</span>
+                    <span id="role-text" class="border-r-2 border-purple-400 pr-1 animate-pulse">Full Stack Engineer</span>
+                </div>
+
+                <!-- Professional Summary Blurb -->
+                <p class="max-w-2xl text-sm sm:text-base md:text-lg text-slate-400 font-normal leading-relaxed mb-10 text-center">
+                    Computer Science undergraduate specializing in high-concurrency <span class="text-slate-200 font-medium">Backend Architecture</span>, <span class="text-slate-200 font-medium">Distributed Microservices</span>, and <span class="text-slate-200 font-medium">Cloud Infrastructure</span>. Competitive Programmer with over <span class="text-purple-300 font-semibold">2,000+ algorithmic problems solved</span>.
+                </p>
+
+                <!-- CTA Action Buttons -->
+                <div class="flex flex-wrap items-center justify-center gap-3.5 mb-12">
+                    <a href="#projects" class="glow-button px-6 py-3 rounded-xl text-white font-semibold text-sm flex items-center space-x-2 shadow-lg shadow-purple-900/50">
+                        <i data-lucide="folder-code" class="w-4 h-4"></i>
+                        <span>Explore Projects</span>
+                    </a>
+                    
+                    <button onclick="copyToClipboard('nithinmyneni010@gmail.com', 'Email copied: nithinmyneni010@gmail.com')" class="px-5 py-3 rounded-xl bg-dark-850 hover:bg-dark-800 text-slate-200 font-medium text-sm border border-slate-700/60 hover:border-purple-500/50 transition-all flex items-center space-x-2 group">
+                        <i data-lucide="copy" class="w-4 h-4 text-purple-400 group-hover:scale-110 transition-transform"></i>
+                        <span>Copy Email</span>
+                    </button>
+
+                    <a href="#contact" class="px-5 py-3 rounded-xl bg-dark-850 hover:bg-dark-800 text-slate-200 font-medium text-sm border border-slate-700/60 hover:border-purple-500/50 transition-all flex items-center space-x-2">
+                        <i data-lucide="send" class="w-4 h-4 text-purple-400"></i>
+                        <span>Contact Me</span>
+                    </a>
+                </div>
+
+                <!-- Quick Platform Badges Matrix -->
+                <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 text-xs font-mono text-slate-400 mb-14">
+                    <a href="https://github.com/nithin01010" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-dark-900 border border-slate-800 hover:border-purple-500/50 hover:text-white transition-all">
+                        <i class="fa-brands fa-github text-purple-400 text-sm"></i>
+                        <span>GitHub (Main)</span>
+                    </a>
+                    <a href="https://github.com/23f2004130" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-dark-900 border border-slate-800 hover:border-purple-500/50 hover:text-white transition-all">
+                        <i class="fa-brands fa-github text-indigo-400 text-sm"></i>
+                        <span>GitHub (IITM)</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/nithin-myneni" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-dark-900 border border-slate-800 hover:border-purple-500/50 hover:text-white transition-all">
+                        <i class="fa-brands fa-linkedin-in text-blue-400 text-sm"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="https://leetcode.com/u/nithin493/" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-dark-900 border border-slate-800 hover:border-purple-500/50 hover:text-white transition-all">
+                        <i class="fa-solid fa-code text-amber-400 text-sm"></i>
+                        <span>LeetCode</span>
+                    </a>
+                    <a href="https://codeforces.com/profile/nithinmyneni010" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-dark-900 border border-slate-800 hover:border-purple-500/50 hover:text-white transition-all">
+                        <i class="fa-solid fa-terminal text-blue-400 text-sm"></i>
+                        <span>Codeforces</span>
+                    </a>
+                    <a href="https://www.codechef.com/users/lloyd_water" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-dark-900 border border-slate-800 hover:border-purple-500/50 hover:text-white transition-all">
+                        <i class="fa-solid fa-award text-amber-500 text-sm"></i>
+                        <span>CodeChef</span>
+                    </a>
+                    <a href="https://atcoder.jp/users/Uniqueorbi" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-dark-900 border border-slate-800 hover:border-purple-500/50 hover:text-white transition-all">
+                        <i class="fa-solid fa-microchip text-purple-400 text-sm"></i>
+                        <span>AtCoder</span>
+                    </a>
+                </div>
+
+                <!-- Stats Grid (Including IITM CGPA & B.Tech CGPA) -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 w-full max-w-5xl">
+                    <div class="glass-card p-4 sm:p-5 rounded-2xl text-center">
+                        <div class="text-2xl sm:text-3xl font-extrabold text-white font-mono text-purple-300 mb-1">2000+</div>
+                        <div class="text-xs text-slate-400 font-medium">Problems Solved (CP)</div>
+                    </div>
+                    <div class="glass-card p-4 sm:p-5 rounded-2xl text-center">
+                        <div class="text-2xl sm:text-3xl font-extrabold text-white font-mono text-purple-300 mb-1">8.79</div>
+                        <div class="text-xs text-slate-400 font-medium">B.Tech CGPA (VRSEC)</div>
+                    </div>
+                    <div class="glass-card p-4 sm:p-5 rounded-2xl text-center">
+                        <div class="text-2xl sm:text-3xl font-extrabold text-white font-mono text-purple-300 mb-1">7.73</div>
+                        <div class="text-xs text-slate-400 font-medium">BS CGPA (IIT Madras)</div>
+                    </div>
+                    <div class="glass-card p-4 sm:p-5 rounded-2xl text-center">
+                        <div class="text-2xl sm:text-3xl font-extrabold text-white font-mono text-purple-300 mb-1">AIR ~3.6K</div>
+                        <div class="text-xs text-slate-400 font-medium">GATE DA 2026 (Score 466)</div>
+                    </div>
+                    <div class="glass-card p-4 sm:p-5 rounded-2xl text-center col-span-2 sm:col-span-1">
+                        <div class="text-2xl sm:text-3xl font-extrabold text-white font-mono text-purple-300 mb-1">4x</div>
+                        <div class="text-xs text-slate-400 font-medium">1st Place Contests</div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- ABOUT & DUAL EDUCATION SECTION                                            -->
+        <!-- ========================================================================= -->
+        <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-slate-800/40 relative">
+            <div class="max-w-6xl mx-auto">
+                
+                <!-- Section Title Header -->
+                <div class="text-center mb-16">
+                    <span class="text-xs font-mono font-semibold uppercase tracking-widest text-purple-400 bg-purple-950/60 px-3 py-1 rounded-full border border-purple-500/20">
+                        About & Academics
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mt-3">
+                        Engineering Foundations & Education
+                    </h2>
+                    <p class="text-slate-400 text-sm sm:text-base max-w-xl mx-auto mt-2">
+                        Pursuing rigorous dual academic programs while building scalable real-world distributed architectures.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                    
+                    <!-- Left: Bio Card & Philosophy -->
+                    <div class="lg:col-span-6 space-y-6">
+                        <div class="glass-card p-6 sm:p-8 rounded-2xl space-y-4">
+                            <h3 class="text-xl font-bold text-white flex items-center space-x-2.5">
+                                <i data-lucide="user" class="w-5 h-5 text-purple-400"></i>
+                                <span>Software & Backend Engineer</span>
+                            </h3>
+                            
+                            <p class="text-slate-300 text-sm sm:text-base leading-relaxed font-normal">
+                                I am a Computer Science undergraduate with hands-on experience architecting high-performance backend systems, asynchronous APIs, and cloud-native microservices using <span class="text-white font-semibold">FastAPI, Flask, PostgreSQL, Redis, and Docker</span>.
+                            </p>
+
+                            <p class="text-slate-400 text-sm leading-relaxed">
+                                With a deep command over <span class="text-slate-200">Data Structures and Algorithms</span>, I specialize in concurrency control, row-level locking, distributed tracing, and database optimization that sustains thousands of concurrent users under strict latency requirements.
+                            </p>
+
+                            <!-- Key Strengths Pills -->
+                            <div class="pt-2 flex flex-wrap gap-2">
+                                <span class="badge-purple px-2.5 py-1 rounded-lg text-xs font-mono">Backend Architecture</span>
+                                <span class="badge-purple px-2.5 py-1 rounded-lg text-xs font-mono">Asynchronous I/O</span>
+                                <span class="badge-purple px-2.5 py-1 rounded-lg text-xs font-mono">Database Indexing & Locks</span>
+                                <span class="badge-purple px-2.5 py-1 rounded-lg text-xs font-mono">Distributed Tracing</span>
+                                <span class="badge-purple px-2.5 py-1 rounded-lg text-xs font-mono">Containerization</span>
+                            </div>
+                        </div>
+
+                        <!-- Contact Quick Reference -->
+                        <div class="glass-card p-5 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono">
+                            <div class="flex items-center space-x-2 text-slate-300">
+                                <i data-lucide="phone" class="w-4 h-4 text-purple-400"></i>
+                                <span>+91-6305155384</span>
+                            </div>
+                            <div class="flex items-center space-x-2 text-slate-300">
+                                <i data-lucide="map-pin" class="w-4 h-4 text-purple-400"></i>
+                                <span>India</span>
+                            </div>
+                            <button onclick="copyToClipboard('+916305155384', 'Phone number copied!')" class="text-purple-400 hover:text-purple-300 underline underline-offset-4">
+                                Copy Phone
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Right: Dual Education Cards -->
+                    <div class="lg:col-span-6 space-y-5">
+                        
+                        <!-- IIT Madras -->
+                        <div class="glass-card p-6 sm:p-7 rounded-2xl relative overflow-hidden group">
+                            <div class="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-purple-500 to-indigo-600"></div>
+                            
+                            <div class="flex items-start justify-between mb-3">
+                                <div>
+                                    <span class="text-xs font-mono text-purple-400 bg-purple-950/60 border border-purple-500/30 px-2.5 py-0.5 rounded-md">
+                                        Premier Institute
+                                    </span>
+                                    <h4 class="text-lg sm:text-xl font-bold text-white mt-2">
+                                        BS Degree – Data Science
+                                    </h4>
+                                    <p class="text-sm font-medium text-slate-300">
+                                        Indian Institute of Technology Madras (IITM)
+                                    </p>
+                                </div>
+                                <span class="text-xs font-mono text-slate-400 bg-dark-900 px-2.5 py-1 rounded-lg border border-slate-800">
+                                    2023 – Present
+                                </span>
+                            </div>
+
+                            <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs">
+                                <span class="text-slate-400">Academic Standing:</span>
+                                <span class="font-mono font-bold text-purple-300 bg-purple-950/50 px-2.5 py-1 rounded-md border border-purple-500/20">
+                                    CGPA: 7.73 / 10
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- VRSEC -->
+                        <div class="glass-card p-6 sm:p-7 rounded-2xl relative overflow-hidden group">
+                            <div class="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-indigo-500 to-purple-600"></div>
+                            
+                            <div class="flex items-start justify-between mb-3">
+                                <div>
+                                    <span class="text-xs font-mono text-purple-400 bg-purple-950/60 border border-purple-500/30 px-2.5 py-0.5 rounded-md">
+                                        Engineering College
+                                    </span>
+                                    <h4 class="text-lg sm:text-xl font-bold text-white mt-2">
+                                        B.Tech – Computer Science & Engineering (AI&ML)
+                                    </h4>
+                                    <p class="text-sm font-medium text-slate-300">
+                                        Velagapudi Ramakrishna Siddhartha Engineering College
+                                    </p>
+                                </div>
+                                <span class="text-xs font-mono text-slate-400 bg-dark-900 px-2.5 py-1 rounded-lg border border-slate-800">
+                                    2023 – Present
+                                </span>
+                            </div>
+
+                            <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs">
+                                <span class="text-slate-400">Academic Standing:</span>
+                                <span class="font-mono font-bold text-purple-300 bg-purple-950/50 px-2.5 py-1 rounded-md border border-purple-500/20">
+                                    CGPA: 8.79 / 10
+                                </span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- EXPERIENCE SECTION                                                        -->
+        <!-- ========================================================================= -->
+        <section id="experience" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-slate-800/40 relative">
+            <div class="max-w-5xl mx-auto">
+                
+                <!-- Section Title Header -->
+                <div class="text-center mb-16">
+                    <span class="text-xs font-mono font-semibold uppercase tracking-widest text-purple-400 bg-purple-950/60 px-3 py-1 rounded-full border border-purple-500/20">
+                        Leadership & Experience
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mt-3">
+                        Professional Work & Community Leadership
+                    </h2>
+                    <p class="text-slate-400 text-sm sm:text-base max-w-xl mx-auto mt-2">
+                        Leading competitive programming domains and authoring algorithmic contest challenges.
+                    </p>
+                </div>
+
+                <!-- Timeline Container -->
+                <div class="relative pl-6 sm:pl-8 border-l-2 border-purple-900/40 space-y-12">
+                    
+                    <!-- Timeline Node 1 -->
+                    <div class="relative group">
+                        <!-- Node Glowing Dot -->
+                        <div class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-5 h-5 rounded-full bg-dark-950 border-2 border-purple-500 flex items-center justify-center group-hover:scale-125 transition-transform duration-300 shadow-md shadow-purple-500/50">
+                            <div class="w-2 h-2 rounded-full bg-purple-400"></div>
+                        </div>
+
+                        <!-- Card Body -->
+                        <div class="glass-card p-6 sm:p-8 rounded-2xl">
+                            
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+                                <div>
+                                    <h3 class="text-xl font-bold text-white group-hover:text-purple-300 transition-colors">
+                                        Competitive Programming Domain Co-Lead
+                                    </h3>
+                                    <p class="text-sm font-semibold text-purple-400">
+                                        Microsoft Learn Student Chapter, VRSEC
+                                    </p>
+                                </div>
+                                <span class="inline-flex items-center text-xs font-mono text-slate-300 bg-dark-900 px-3 py-1 rounded-lg border border-slate-700/60 w-fit">
+                                    <i data-lucide="calendar" class="w-3.5 h-3.5 mr-1.5 text-purple-400"></i>
+                                    Sep 2025 – Present
+                                </span>
+                            </div>
+
+                            <!-- Bullet Achievements -->
+                            <ul class="space-y-3 text-slate-300 text-sm sm:text-base leading-relaxed">
+                                <li class="flex items-start">
+                                    <span class="text-purple-400 mr-2.5 mt-1">▸</span>
+                                    <span>
+                                        <strong class="text-white">Spearheaded “Byte Battle”:</strong> Organized a flagship 3-hour competitive coding contest on HackerEarth by authoring 3 original Data Structures and Algorithms (DSA) challenges for <span class="text-purple-300 font-semibold">150+ student participants</span>.
+                                    </span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-purple-400 mr-2.5 mt-1">▸</span>
+                                    <span>
+                                        <strong class="text-white">Contest Execution & Infrastructure:</strong> Managed end-to-end technical contest execution including platform configuration, time/space complexity limits, test case preparation, sub-task validator scripts, and live event moderation.
+                                    </span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-purple-400 mr-2.5 mt-1">▸</span>
+                                    <span>
+                                        <strong class="text-white">Technical Workshops & Hackathons:</strong> Organized and facilitated 4 hands-on workshops on <span class="text-slate-200">Quantum Computing, Git & GitHub, Vibe Coding, and Agentic AI</span>, driving significant technical engagement across the chapter.
+                                    </span>
+                                </li>
+                            </ul>
+
+                        </div>
+
+                        <!-- Right Column: Technical Workshops -->
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-2 text-white font-semibold text-base">
+                                <i data-lucide="users" class="w-5 h-5 text-purple-400"></i>
+                                <span>Conducted 4 Hands-on Workshops</span>
+                            </div>
+                            <p class="text-sm text-slate-300 leading-relaxed">
+                                Designed practical curriculum and mentored peers across cutting-edge computer science domains:
+                            </p>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+                                <div class="p-3 rounded-xl bg-dark-900 border border-slate-800">
+                                    <div class="font-bold text-xs text-white">Quantum Computing</div>
+                                    <p class="text-[11px] text-slate-400 mt-0.5">Qubits, superposition & quantum gates.</p>
+                                </div>
+                                <div class="p-3 rounded-xl bg-dark-900 border border-slate-800">
+                                    <div class="font-bold text-xs text-white">Git & GitHub Pro</div>
+                                    <p class="text-[11px] text-slate-400 mt-0.5">Branching, PRs, and collaborative workflows.</p>
+                                </div>
+                                <div class="p-3 rounded-xl bg-dark-900 border border-slate-800">
+                                    <div class="font-bold text-xs text-white">Vibe Coding</div>
+                                    <p class="text-[11px] text-slate-400 mt-0.5">AI-assisted rapid software prototyping.</p>
+                                </div>
+                                <div class="p-3 rounded-xl bg-dark-900 border border-slate-800">
+                                    <div class="font-bold text-xs text-white">Agentic AI</div>
+                                    <p class="text-[11px] text-slate-400 mt-0.5">Autonomous LLM agents & MCP tools.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- FEATURED PROJECTS SECTION (Spacious Architecture Format)                   -->
+        <!-- ========================================================================= -->
+        <section id="projects" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-slate-800/40 relative">
+            <div class="max-w-6xl mx-auto">
+                
+                <!-- Section Title Header -->
+                <div class="text-center mb-16">
+                    <span class="text-xs font-mono font-semibold uppercase tracking-widest text-purple-400 bg-purple-950/60 px-3 py-1 rounded-full border border-purple-500/20">
+                        Engineering Portfolio
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mt-3">
+                        Featured Systems & Architectures
+                    </h2>
+                    <p class="text-slate-400 text-sm sm:text-base max-w-xl mx-auto mt-2">
+                        Production-grade backend architectures, distributed observability, and responsive analytics applications.
+                    </p>
+                </div>
+
+                <!-- Spacious Vertical Stack Projects Layout -->
+                <div class="space-y-8">
+                    
+                    <!-- Project 01: Scalable Multi-Vendor E-Commerce Backend -->
+                    <div class="glass-card rounded-3xl p-6 sm:p-8 lg:p-10 relative overflow-hidden group">
+                        <div class="flex flex-col lg:flex-row lg:items-start justify-between gap-6 pb-6 border-b border-slate-800/80">
+                            <div>
+                                <div class="flex items-center space-x-3 mb-2">
+                                    <span class="text-xs font-mono text-purple-400 font-bold tracking-widest uppercase">
+                                        01 / Backend & Concurrency
+                                    </span>
+                                </div>
+                                <h3 class="text-2xl sm:text-3xl font-extrabold text-white group-hover:text-purple-300 transition-colors">
+                                    Scalable Multi-Vendor E-Commerce Backend
+                                </h3>
+                            </div>
+                            <a href="https://github.com/nithin01010/E-commerce-Backend" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-xl bg-dark-900 hover:bg-dark-800 text-xs font-mono text-purple-300 border border-purple-500/30 hover:border-purple-500/70 transition-all flex items-center gap-2 self-start shrink-0 shadow-sm">
+                                <i class="fa-brands fa-github text-sm text-purple-400"></i>
+                                <span>View Repository</span>
+                                <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+                            </a>
+                        </div>
+
+                        <p class="text-slate-300 text-sm sm:text-base leading-relaxed my-6">
+                            High-concurrency e-commerce backend built with FastAPI, PostgreSQL, and Redis. Engineered specifically to solve flash-sale race conditions, inventory overselling, and asynchronous order settlement across multi-vendor operations.
+                        </p>
+
+                        <!-- Key Architecture Points Grid -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                            <div class="p-4 rounded-2xl bg-dark-900/90 border border-slate-800/90 flex items-start space-x-3">
+                                <div class="w-8 h-8 rounded-xl bg-purple-950/80 border border-purple-500/30 flex items-center justify-center text-purple-400 shrink-0">
+                                    <i class="fa-solid fa-lock text-xs text-amber-400"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white text-sm">PostgreSQL Row-Level Locking</h4>
+                                    <p class="text-xs text-slate-400 mt-0.5">Eliminates inventory overselling and race conditions during simultaneous multi-user checkouts.</p>
+                                </div>
+                            </div>
+
+                            <div class="p-4 rounded-2xl bg-dark-900/90 border border-slate-800/90 flex items-start space-x-3">
+                                <div class="w-8 h-8 rounded-xl bg-purple-950/80 border border-purple-500/30 flex items-center justify-center text-purple-400 shrink-0">
+                                    <i class="fa-solid fa-layer-group text-xs text-red-400"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white text-sm">Redis Caching & Cursor Pagination</h4>
+                                    <p class="text-xs text-slate-400 mt-0.5">Sub-millisecond query response for catalog discovery and large product catalog browsing.</p>
+                                </div>
+                            </div>
+
+                            <div class="p-4 rounded-2xl bg-dark-900/90 border border-slate-800/90 flex items-start space-x-3">
+                                <div class="w-8 h-8 rounded-xl bg-purple-950/80 border border-purple-500/30 flex items-center justify-center text-purple-400 shrink-0">
+                                    <i class="fa-solid fa-shield-halved text-xs text-blue-400"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white text-sm">RBAC Access Control</h4>
+                                    <p class="text-xs text-slate-400 mt-0.5">Strict role separation and JWT authorization for Customer, Vendor Seller, and Admin actors.</p>
+                                </div>
+                            </div>
+
+                            <div class="p-4 rounded-2xl bg-dark-900/90 border border-slate-800/90 flex items-start space-x-3">
+                                <div class="w-8 h-8 rounded-xl bg-purple-950/80 border border-purple-500/30 flex items-center justify-center text-purple-400 shrink-0">
+                                    <i class="fa-solid fa-chart-line text-xs text-emerald-400"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white text-sm">Locust Stress Tested</h4>
+                                    <p class="text-xs text-slate-400 mt-0.5">Sustained 100 concurrent users with 0% failure rate; 1,000 concurrent users at 50 RPS.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tech Stack Tags -->
+                        <div class="pt-4 border-t border-slate-800/60 flex flex-wrap items-center gap-2">
+                            <span class="text-xs font-mono text-slate-400 mr-2">Stack:</span>
+                            <span class="badge-purple px-3 py-1 rounded-lg text-xs font-mono"><i class="fa-solid fa-bolt text-emerald-400 mr-1.5"></i>FastAPI</span>
+                            <span class="badge-purple px-3 py-1 rounded-lg text-xs font-mono"><i class="fa-solid fa-database text-blue-400 mr-1.5"></i>PostgreSQL</span>
+                            <span class="badge-purple px-3 py-1 rounded-lg text-xs font-mono"><i class="fa-solid fa-layer-group text-red-400 mr-1.5"></i>Redis</span>
+                            <span class="badge-purple px-3 py-1 rounded-lg text-xs font-mono"><i class="fa-solid fa-gears text-purple-300 mr-1.5"></i>Celery</span>
+                            <span class="badge-purple px-3 py-1 rounded-lg text-xs font-mono"><i class="fa-brands fa-docker text-sky-400 mr-1.5"></i>Docker</span>
+                            <span class="badge-purple px-3 py-1 rounded-lg text-xs font-mono"><i class="fa-solid fa-vial text-amber-400 mr-1.5"></i>Locust</span>
+                        </div>
+                    </div>
+
+                    <!-- Project 02: Distributed Observability Platform -->
+                    <div class="glass-card rounded-3xl p-6 sm:p-8 lg:p-10 relative overflow-hidden group">
+                        <div class="flex flex-col lg:flex-row lg:items-start justify-between gap-6 pb-6 border-b border-slate-800/80">
+                            <div>
+                                <div class="flex items-center space-x-3 mb-2">
+                                    <span class="text-xs font-mono text-purple-400 font-bold tracking-widest uppercase">
+                                        02 / Telemetry & Microservices
+                                    </span>
+                                </div>
+                                <h3 class="text-2xl sm:text-3xl font-extrabold text-white group-hover:text-purple-300 transition-colors">
+                                    Distributed Observability Platform
+                                </h3>
+                            </div>
+                            <a href="https://github.com/nithin01010/Logging-System" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-xl bg-dark-900 hover:bg-dark-800 text-xs font-mono text-purple-300 border border-purple-500/30 hover:border-purple-500/70 transition-all flex items-center gap-2 self-start shrink-0 shadow-sm">
+                                <i class="fa-brands fa-github text-sm text-purple-400"></i>
+                                <span>View Repository</span>
+                                <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+                            </a>
+                        </div>
+
+                        <p class="text-slate-300 text-sm sm:text-base leading-relaxed my-6">
+                            Full-stack distributed tracing and centralized logging platform engineered to aggregate, index, and visualize microservice telemetry across hybrid cloud workloads with OpenTelemetry standard compliance.
+                        </p>
+
+                        <!-- Key Architecture Points Grid -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                            <div class="p-4 rounded-2xl bg-dark-900/90 border border-slate-800/90 flex items-start space-x-3">
+                                <div class="w-8 h-8 rounded-xl bg-purple-950/80 border border-purple-500/30 flex items-center justify-center text-purple-400 shrink-0">
+                                    <i class="fa-solid fa-network-wired text-xs text-sky-400"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white text-sm">Async REST & GraphQL Ingestion</h4>
+                                    <p class="text-xs text-slate-400 mt-0.5">High-throughput asynchronous I/O with MongoDB for concurrent ingestion from distributed nodes.</p>
+                                </div>
+                            </div>
+
+                            <div class="p-4 rounded-2xl bg-dark-900/90 border border-slate-800/90 flex items-start space-x-3">
+                                <div class="w-8 h-8 rounded-xl bg-purple-950/80 border border-purple-500/30 flex items-center justify-center text-purple-400 shrink-0">
+                                    <i class="fa-solid fa-diagram-project text-xs text-pink-400"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white text-sm">Parent-Child Trace Hierarchy</h4>
+                                    <p class="text-xs text-slate-400 mt-0.5">Reconstructs complete call graphs and latency bottlenecks across microservices using OpenTelemetry.</p>
+                                </div>
+                            </div>
+
+                            <div class="p-4 rounded-2xl bg-dark-900/90 border border-slate-800/90 flex items-start space-x-3">
+                                <div class="w-8 h-8 rounded-xl bg-purple-950/80 border border-purple-500/30 flex items-center justify-center text-purple-400 shrink-0">
+                                    <i class="fa-solid fa-bell text-xs text-amber-400"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white text-sm">Automated Threshold Alerting</h4>
+                                    <p class="text-xs text-slate-400 mt-0.5">Real-time log aggregation pipeline triggering alerts on critical error rate spikes.</p>
+                                </div>
+                            </div>
+
+                            <div class="p-4 rounded-2xl bg-dark-900/90 border border-slate-800/90 flex items-start space-x-3">
+                                <div class="w-8 h-8 rounded-xl bg-purple-950/80 border border-purple-500/30 flex items-center justify-center text-purple-400 shrink-0">
+                                    <i class="fa-brands fa-react text-xs text-teal-400"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white text-sm">Interactive Flame Graphs UI</h4>
+                                    <p class="text-xs text-slate-400 mt-0.5">Next.js dashboard rendering real-time service health heatmaps and waterfall span visualizers.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tech Stack Tags -->
+                        <div class="pt-4 border-t border-slate-800/60 flex flex-wrap items-center gap-2">
+                            <span class="text-xs font-mono text-slate-400 mr-2">Stack:</span>
+                            <span class="badge-purple px-3 py-1 rounded-lg text-xs font-mono"><i class="fa-solid fa-bolt text-emerald-400 mr-1.5"></i>FastAPI</span>
+                            <span class="badge-purple px-3 py-1 rounded-lg text-xs font-mono"><i class="fa-brands fa-node-js text-white mr-1.5"></i>Next.js</span>
+                            <span class="badge-purple px-3 py-1 rounded-lg text-xs font-mono"><i class="fa-solid fa-leaf text-emerald-400 mr-1.5"></i>MongoDB</span>
+                            <span class="badge-purple px-3 py-1.5 rounded-lg text-xs font-mono"><i class="fa-solid fa-diagram-project text-pink-400 mr-1.5"></i>GraphQL</span>
+                            <span class="badge-purple px-3 py-1.5 rounded-lg text-xs font-mono"><i class="fa-solid fa-chart-line text-blue-400 mr-1.5"></i>OpenTelemetry</span>
+                            <span class="badge-purple px-3 py-1.5 rounded-lg text-xs font-mono"><i class="fa-brands fa-docker text-sky-400 mr-1.5"></i>Docker</span>
+                        </div>
+                    </div>
+
+                    <!-- Project 03: Country Data Dashboard -->
+                    <div class="glass-card rounded-3xl p-6 sm:p-8 lg:p-10 relative overflow-hidden group">
+                        <div class="flex flex-col lg:flex-row lg:items-start justify-between gap-6 pb-6 border-b border-slate-800/80">
+                            <div>
+                                <div class="flex items-center space-x-3 mb-2">
+                                    <span class="text-xs font-mono text-purple-400 font-bold tracking-widest uppercase">
+                                        03 / Full-Stack & Web Analytics
+                                    </span>
+                                </div>
+                                <h3 class="text-2xl sm:text-3xl font-extrabold text-white group-hover:text-purple-300 transition-colors">
+                                    Country Data Dashboard
+                                </h3>
+                            </div>
+                            <a href="https://github.com/23f2004130/Take-Home-Task" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-xl bg-dark-900 hover:bg-dark-800 text-xs font-mono text-purple-300 border border-purple-500/30 hover:border-purple-500/70 transition-all flex items-center gap-2 self-start shrink-0 shadow-sm">
+                                <i class="fa-brands fa-github text-sm text-purple-400"></i>
+                                <span>View Repository</span>
+                                <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+                            </a>
+                        </div>
+
+                        <p class="text-slate-300 text-sm sm:text-base leading-relaxed my-6">
+                            A high-performance analytics web dashboard built with Next.js, React, and TypeScript. Consumes the public REST Countries API with real-time URL state synchronization and dynamic nested routing.
+                        </p>
+
+                        <!-- Key Architecture Points Grid -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                            <div class="p-4 rounded-2xl bg-dark-900/90 border border-slate-800/90 flex items-start space-x-3">
+                                <div class="w-8 h-8 rounded-xl bg-purple-950/80 border border-purple-500/30 flex items-center justify-center text-purple-400 shrink-0">
+                                    <i class="fa-solid fa-magnifying-glass text-xs text-sky-400"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white text-sm">Global Real-Time Search</h4>
+                                    <p class="text-xs text-slate-400 mt-0.5">Instantly filter and highlight countries by name with smooth client-side filtering.</p>
+                                </div>
+                            </div>
+
+                            <div class="p-4 rounded-2xl bg-dark-900/90 border border-slate-800/90 flex items-start space-x-3">
+                                <div class="w-8 h-8 rounded-xl bg-purple-950/80 border border-purple-500/30 flex items-center justify-center text-purple-400 shrink-0">
+                                    <i class="fa-solid fa-link text-xs text-purple-400"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white text-sm">URL State Synchronization</h4>
+                                    <p class="text-xs text-slate-400 mt-0.5">Region and Subregion filters sync to query parameters (`q`, `region`, `subregion`) for shareable URLs.</p>
+                                </div>
+                            </div>
+
+                            <div class="p-4 rounded-2xl bg-dark-900/90 border border-slate-800/90 flex items-start space-x-3">
+                                <div class="w-8 h-8 rounded-xl bg-purple-950/80 border border-purple-500/30 flex items-center justify-center text-purple-400 shrink-0">
+                                    <i class="fa-solid fa-scroll text-xs text-amber-400"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white text-sm">Paginated Virtual Scrolling</h4>
+                                    <p class="text-xs text-slate-400 mt-0.5">Dynamically loads and renders country records on scroll for optimal memory footprint.</p>
+                                </div>
+                            </div>
+
+                            <div class="p-4 rounded-2xl bg-dark-900/90 border border-slate-800/90 flex items-start space-x-3">
+                                <div class="w-8 h-8 rounded-xl bg-purple-950/80 border border-purple-500/30 flex items-center justify-center text-purple-400 shrink-0">
+                                    <i class="fa-solid fa-map-location-dot text-xs text-emerald-400"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white text-sm">Dynamic Route Deep Dives</h4>
+                                    <p class="text-xs text-slate-400 mt-0.5">Dedicated `/country/[code]` routes with borders, timezones, population, and currencies.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tech Stack Tags -->
+                        <div class="pt-4 border-t border-slate-800/60 flex flex-wrap items-center gap-2">
+                            <span class="text-xs font-mono text-slate-400 mr-2">Stack:</span>
+                            <span class="badge-purple px-3 py-1 rounded-lg text-xs font-mono"><i class="fa-brands fa-node-js text-white mr-1.5"></i>Next.js</span>
+                            <span class="badge-purple px-3 py-1 rounded-lg text-xs font-mono"><i class="fa-brands fa-react text-sky-400 mr-1.5"></i>React</span>
+                            <span class="badge-purple px-3 py-1 rounded-lg text-xs font-mono"><i class="fa-brands fa-js text-blue-400 mr-1.5"></i>TypeScript</span>
+                            <span class="badge-purple px-3 py-1 rounded-lg text-xs font-mono"><i class="fa-solid fa-wind text-teal-400 mr-1.5"></i>TailwindCSS</span>
+                            <span class="badge-purple px-3 py-1.5 rounded-lg text-xs font-mono"><i class="fa-solid fa-globe text-purple-300 mr-1.5"></i>REST Countries API</span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- TECHNICAL SKILLS MATRIX SECTION                                           -->
+        <!-- ========================================================================= -->
+        <section id="skills" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-slate-800/40 relative">
+            <div class="max-w-6xl mx-auto">
+                
+                <!-- Section Title Header -->
+                <div class="text-center mb-16">
+                    <span class="text-xs font-mono font-semibold uppercase tracking-widest text-purple-400 bg-purple-950/60 px-3 py-1 rounded-full border border-purple-500/20">
+                        Technical Arsenal
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mt-3">
+                        Skills & Engineering Stack
+                    </h2>
+                    <p class="text-slate-400 text-sm sm:text-base max-w-xl mx-auto mt-2">
+                        Technologies, frameworks, databases, and core principles I leverage in daily development.
+                    </p>
+                </div>
+
+                <!-- Skill Categories Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    
+                    <!-- 1. Languages -->
+                    <div class="glass-card p-6 rounded-2xl">
+                        <div class="flex items-center space-x-3 mb-4">
+                            <div class="w-10 h-10 rounded-xl bg-purple-950/80 border border-purple-500/30 flex items-center justify-center text-purple-400">
+                                <i class="fa-solid fa-code text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-white text-base">Languages</h3>
+                                <p class="text-xs text-slate-400 font-mono">Core Programming</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="badge-purple px-3 py-1.5 rounded-lg text-xs font-mono font-semibold flex items-center gap-1.5">
+                                <i class="fa-brands fa-python text-amber-400"></i> Python
+                            </span>
+                            <span class="badge-purple px-3 py-1.5 rounded-lg text-xs font-mono font-semibold flex items-center gap-1.5">
+                                <i class="fa-solid fa-c text-blue-400"></i> C++
+                            </span>
+                            <span class="badge-purple px-3 py-1.5 rounded-lg text-xs font-mono font-semibold flex items-center gap-1.5">
+                                <i class="fa-brands fa-js text-blue-400"></i> TypeScript
+                            </span>
+                            <span class="badge-purple px-3 py-1.5 rounded-lg text-xs font-mono font-semibold flex items-center gap-1.5">
+                                <i class="fa-solid fa-database text-purple-400"></i> SQL
+                            </span>
+                            <span class="badge-purple px-3 py-1.5 rounded-lg text-xs font-mono font-semibold flex items-center gap-1.5">
+                                <i class="fa-brands fa-square-js text-amber-400"></i> JavaScript
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- 2. Backend & APIs -->
+                    <div class="glass-card p-6 rounded-2xl">
+                        <div class="flex items-center space-x-3 mb-4">
+                            <div class="w-10 h-10 rounded-xl bg-purple-950/80 border border-purple-500/30 flex items-center justify-center text-purple-400">
+                                <i class="fa-solid fa-server text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-white text-base">Backend & APIs</h3>
+                                <p class="text-xs text-slate-400 font-mono">Microservices & Protocols</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="badge-purple px-3 py-1.5 rounded-lg text-xs font-mono font-semibold flex items-center gap-1.5">
+                                <i class="fa-solid fa-bolt text-emerald-400"></i> FastAPI
+                            </span>
+                            <span class="badge-purple px-3 py-1.5 rounded-lg text-xs font-mono font-semibold flex items-center gap-1.5">
+                                <i class="fa-solid fa-flask text-slate-300"></i> Flask
+                            </span>
+                            <span class="badge-purple px-3 py-1.5 rounded-lg text-xs font-mono font-semibold flex items-center gap-1.5">
+                                <i class="fa-solid fa-network-wired text-purple-300"></i> REST APIs
+                            </span>
+                            <span class="badge-purple px-3 py-1.5 rounded-lg text-xs font-mono font-semibold flex items-center gap-1.5">
+                                <i class="fa-solid fa-diagram-project text-pink-400"></i> GraphQL
+                            </span>
+                            <span class="badge-purple px-3 py-1.5 rounded-lg text-xs font-mono font-semibold flex items-center gap-1.5">
+                                <i class="fa-solid fa-cubes text-red-400"></i> SQLAlchemy
+                            </span>
+                            <span class="badge-purple px-3 py-1.5 rounded-lg text-xs font-mono font-semibold flex items-center gap-1.5">
+                                <i class="fa-solid fa-gears text-emerald-400"></i> Celery Workers
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- 3. Databases & Caching -->
+                    <div class="glass-card p-6 rounded-2xl">
+                        <div class="flex items-center space-x-3 mb-4">
+                            <div class="w-10 h-10 rounded-xl bg-purple-950/80 border border-purple-500/30 flex items-center justify-center text-purple-400">
+                                <i class="fa-solid fa-database text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-white text-base">Databases & Caching</h3>
+                                <p class="text-xs text-slate-400 font-mono">Storage & In-Memory</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="badge-purple px-3 py-1.5 rounded-lg text-xs font-mono font-semibold flex items-center gap-1.5">
+                                <i class="fa-solid fa-database text-blue-400"></i> PostgreSQL
+                            </span>
+                            <span class="badge-purple px-3 py-1.5 rounded-lg text-xs font-mono font-semibold flex items-center gap-1.5">
+                                <i class="fa-solid fa-leaf text-emerald-400"></i> MongoDB
+                            </span>
+                            <span class="badge-purple px-3 py-1.5 rounded-lg text-xs font-mono font-semibold flex items-center gap-1.5">
+                                <i class="fa-solid fa-layer-group text-red-400"></i> Redis
+                            </span>
+                            <span class="badge-purple px-3 py-1.5 rounded-lg text-xs font-mono font-semibold flex items-center gap-1.5">
+                                <i class="fa-solid fa-box-archive text-sky-400"></i> SQLite
+                            </span>
+                            <span class="badge-purple px-3 py-1.5 rounded-lg text-xs font-mono font-semibold flex items-center gap-1.5">
+                                <i class="fa-solid fa-lock text-amber-400"></i> Row-Level Locks
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- 4. Frontend -->
+                    <div class="glass-card p-6 rounded-2xl">
+                        <div class="flex items-center space-x-3 mb-4">
+                            <div class="w-10 h-10 rounded-xl bg-purple-950/80 border border-purple-500/30 flex items-center justify-center text-purple-400">
+                                <i class="fa-solid fa-laptop-code text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-white text-base">Frontend & UI</h3>
+                                <p class="text-xs text-slate-400 font-mono">Interactive Web</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="badge-purple px-3 py-1.5 rounded-lg text-xs font-mono font-semibold flex items-center gap-1.5">
+                                <i class="fa-brands fa-node-js text-white"></i> Next.js
+                            </span>
+                            <span class="badge-purple px-3 py-1.5 rounded-lg text-xs font-mono font-semibold flex items-center gap-1.5">
+                                <i class="fa-brands fa-react text-sky-400"></i> React
+                            </span>
+                            <span class="badge-purple px-3 py-1.5 rounded-lg text-xs font-mono font-semibold flex items-center gap-1.5">
+                                <i class="fa-solid fa-wind text-teal-400"></i> TailwindCSS
+                            </span>
+                            <span class="badge-purple px-3 py-1.5 rounded-lg text-xs font-mono font-semibold flex items-center gap-1.5">
+                                <i class="fa-brands fa-html5 text-orange-400"></i> HTML5 / CSS3
+                            </span>
+                            <span class="badge-purple px-3 py-1.5 rounded-lg text-xs font-mono font-semibold flex items-center gap-1.5">
+                                <i class="fa-solid fa-mobile-screen text-purple-300"></i> Responsive Design
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- 5. Cloud & DevOps -->
+                    <div class="glass-card p-6 rounded-2xl">
+                        <div class="flex items-center space-x-3 mb-4">
+                            <div class="w-10 h-10 rounded-xl bg-purple-950/80 border border-purple-500/30 flex items-center justify-center text-purple-400">
+                                <i class="fa-solid fa-cloud text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-white text-base">Tools & Cloud</h3>
+                                <p class="text-xs text-slate-400 font-mono">Infrastructure & CI/CD</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="badge-purple px-3 py-1.5 rounded-lg text-xs font-mono font-semibold flex items-center gap-1.5">
+                                <i class="fa-brands fa-docker text-sky-400"></i> Docker
+                            </span>
+                            <span class="badge-purple px-3 py-1.5 rounded-lg text-xs font-mono font-semibold flex items-center gap-1.5 border-purple-400/40 bg-purple-900/30">
+                                <i class="fa-solid fa-cube text-purple-400"></i> Podman
+                            </span>
+                            <span class="badge-purple px-3 py-1.5 rounded-lg text-xs font-mono font-semibold flex items-center gap-1.5">
+                                <i class="fa-brands fa-aws text-amber-500"></i> AWS Cloud
+                            </span>
+                            <span class="badge-purple px-3 py-1.5 rounded-lg text-xs font-mono font-semibold flex items-center gap-1.5">
+                                <i class="fa-brands fa-git-alt text-orange-500"></i> Git & GitHub
+                            </span>
+                            <span class="badge-purple px-3 py-1.5 rounded-lg text-xs font-mono font-semibold flex items-center gap-1.5">
+                                <i class="fa-solid fa-paper-plane text-orange-400"></i> Postman
+                            </span>
+                            <span class="badge-purple px-3 py-1.5 rounded-lg text-xs font-mono font-semibold flex items-center gap-1.5">
+                                <i class="fa-solid fa-wand-magic-sparkles text-purple-400"></i> Antigravity
+                            </span>
+                            <span class="badge-purple px-3 py-1.5 rounded-lg text-xs font-mono font-semibold flex items-center gap-1.5">
+                                <i class="fa-solid fa-chart-line text-blue-400"></i> OpenTelemetry
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- 6. Core Computer Science -->
+                    <div class="glass-card p-6 rounded-2xl">
+                        <div class="flex items-center space-x-3 mb-4">
+                            <div class="w-10 h-10 rounded-xl bg-purple-950/80 border border-purple-500/30 flex items-center justify-center text-purple-400">
+                                <i class="fa-solid fa-microchip text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-white text-base">Core Computer Science</h3>
+                                <p class="text-xs text-slate-400 font-mono">Fundamentals & Theory</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="badge-purple px-3 py-1.5 rounded-lg text-xs font-mono font-semibold flex items-center gap-1.5">
+                                <i class="fa-solid fa-code-fork text-purple-400"></i> Data Structures (DSA)
+                            </span>
+                            <span class="badge-purple px-3 py-1.5 rounded-lg text-xs font-mono font-semibold flex items-center gap-1.5">
+                                <i class="fa-solid fa-gears text-purple-400"></i> Operating Systems
+                            </span>
+                            <span class="badge-purple px-3 py-1.5 rounded-lg text-xs font-mono font-semibold flex items-center gap-1.5">
+                                <i class="fa-solid fa-database text-purple-400"></i> DBMS
+                            </span>
+                            <span class="badge-purple px-3 py-1.5 rounded-lg text-xs font-mono font-semibold flex items-center gap-1.5">
+                                <i class="fa-solid fa-object-group text-purple-400"></i> OOP
+                            </span>
+                            <span class="badge-purple px-3 py-1.5 rounded-lg text-xs font-mono font-semibold flex items-center gap-1.5">
+                                <i class="fa-solid fa-network-wired text-purple-400"></i> System Design
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- PROFILES & COMPETITIVE PROGRAMMING SECTION                                 -->
+        <!-- ========================================================================= -->
+        <section id="profiles" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-slate-800/40 relative">
+            <div class="max-w-6xl mx-auto">
+                
+                <!-- Section Title Header -->
+                <div class="text-center mb-16">
+                    <span class="text-xs font-mono font-semibold uppercase tracking-widest text-purple-400 bg-purple-950/60 px-3 py-1 rounded-full border border-purple-500/20">
+                        Competitive Coding & Profiles
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mt-3">
+                        Online Profiles & Coding Footprint
+                    </h2>
+                    <p class="text-slate-400 text-sm sm:text-base max-w-xl mx-auto mt-2">
+                        Demonstrated problem-solving track record across major competitive programming platforms and GitHub.
+                    </p>
+                </div>
+
+                <!-- Profile Cards Grid (7 Platforms) -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+                    
+                    <!-- LeetCode Card -->
+                    <a href="https://leetcode.com/u/nithin493/" target="_blank" rel="noopener noreferrer" class="glass-card p-6 rounded-2xl flex flex-col justify-between group">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 font-bold shadow-inner">
+                                    <i class="fa-solid fa-code text-lg text-amber-400"></i>
+                                </div>
+                                <span class="text-xs font-mono text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20">
+                                    nithin493
+                                </span>
+                            </div>
+                            <h3 class="text-lg font-bold text-white group-hover:text-amber-300 transition-colors">
+                                LeetCode
+                            </h3>
+                            <p class="text-xs text-slate-400 mt-1">
+                                Part of the 2,000+ total algorithmic problem-solving repertoire across data structures.
+                            </p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs text-amber-400 font-mono">
+                            <span>View Profile</span>
+                            <i data-lucide="external-link" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </a>
+
+                    <!-- Codeforces Card -->
+                    <a href="https://codeforces.com/profile/nithinmyneni010" target="_blank" rel="noopener noreferrer" class="glass-card p-6 rounded-2xl flex flex-col justify-between group">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 font-bold shadow-inner">
+                                    <i class="fa-solid fa-terminal text-lg text-blue-400"></i>
+                                </div>
+                                <span class="text-xs font-mono text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded border border-blue-500/20">
+                                    nithinmyneni010
+                                </span>
+                            </div>
+                            <h3 class="text-lg font-bold text-white group-hover:text-blue-300 transition-colors">
+                                Codeforces
+                            </h3>
+                            <p class="text-xs text-slate-400 mt-1">
+                                Algorithmic speed, dynamic programming, and advanced graph contest rounds.
+                            </p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs text-blue-400 font-mono">
+                            <span>View Profile</span>
+                            <i data-lucide="external-link" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </a>
+
+                    <!-- CodeChef Card -->
+                    <a href="https://www.codechef.com/users/lloyd_water" target="_blank" rel="noopener noreferrer" class="glass-card p-6 rounded-2xl flex flex-col justify-between group">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-10 h-10 rounded-xl bg-amber-600/10 border border-amber-600/30 flex items-center justify-center text-amber-500 font-bold shadow-inner">
+                                    <i class="fa-solid fa-award text-lg text-amber-500"></i>
+                                </div>
+                                <span class="text-xs font-mono text-amber-400 bg-amber-600/10 px-2 py-0.5 rounded border border-amber-600/20">
+                                    lloyd_water
+                                </span>
+                            </div>
+                            <h3 class="text-lg font-bold text-white group-hover:text-amber-300 transition-colors">
+                                CodeChef
+                            </h3>
+                            <p class="text-xs text-slate-400 mt-1">
+                                Rated long challenges, Starters rounds, and data structures challenges.
+                            </p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs text-amber-400 font-mono">
+                            <span>View Profile</span>
+                            <i data-lucide="external-link" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </a>
+
+                    <!-- AtCoder Card -->
+                    <a href="https://atcoder.jp/users/Uniqueorbi" target="_blank" rel="noopener noreferrer" class="glass-card p-6 rounded-2xl flex flex-col justify-between group">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 font-bold shadow-inner">
+                                    <i class="fa-solid fa-microchip text-lg text-purple-400"></i>
+                                </div>
+                                <span class="text-xs font-mono text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded border border-purple-500/20">
+                                    Uniqueorbi
+                                </span>
+                            </div>
+                            <h3 class="text-lg font-bold text-white group-hover:text-purple-300 transition-colors">
+                                AtCoder
+                            </h3>
+                            <p class="text-xs text-slate-400 mt-1">
+                                High-precision competitive programming rounds and mathematical problem solving.
+                            </p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs text-purple-400 font-mono">
+                            <span>View Profile</span>
+                            <i data-lucide="external-link" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </a>
+
+                    <!-- GitHub Main Card -->
+                    <a href="https://github.com/nithin01010" target="_blank" rel="noopener noreferrer" class="glass-card p-6 rounded-2xl flex flex-col justify-between group">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-10 h-10 rounded-xl bg-purple-950/80 border border-purple-500/40 flex items-center justify-center text-white font-bold shadow-inner">
+                                    <i class="fa-brands fa-github text-xl text-white"></i>
+                                </div>
+                                <span class="text-xs font-mono text-purple-300 bg-purple-950/60 px-2 py-0.5 rounded border border-purple-500/30">
+                                    nithin01010 (Main)
+                                </span>
+                            </div>
+                            <h3 class="text-lg font-bold text-white group-hover:text-purple-300 transition-colors">
+                                GitHub (Primary)
+                            </h3>
+                            <p class="text-xs text-slate-400 mt-1">
+                                Open source backend services, microservice architectures, and full-stack applications.
+                            </p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs text-purple-400 font-mono">
+                            <span>Explore Repos</span>
+                            <i data-lucide="external-link" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </a>
+
+                    <!-- GitHub Secondary Card -->
+                    <a href="https://github.com/23f2004130" target="_blank" rel="noopener noreferrer" class="glass-card p-6 rounded-2xl flex flex-col justify-between group">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-10 h-10 rounded-xl bg-indigo-950/80 border border-indigo-500/40 flex items-center justify-center text-white font-bold shadow-inner">
+                                    <i class="fa-brands fa-github text-xl text-indigo-300"></i>
+                                </div>
+                                <span class="text-xs font-mono text-indigo-300 bg-indigo-950/60 px-2 py-0.5 rounded border border-indigo-500/30">
+                                    23f2004130 (IITM)
+                                </span>
+                            </div>
+                            <h3 class="text-lg font-bold text-white group-hover:text-purple-300 transition-colors">
+                                GitHub (Academic)
+                            </h3>
+                            <p class="text-xs text-slate-400 mt-1">
+                                Academic projects, data science repositories, and experimental codebase work.
+                            </p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs text-purple-400 font-mono">
+                            <span>Explore Repos</span>
+                            <i data-lucide="external-link" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </a>
+
+                    <!-- LinkedIn Card -->
+                    <a href="https://www.linkedin.com/in/nithin-myneni" target="_blank" rel="noopener noreferrer" class="glass-card p-6 rounded-2xl flex flex-col justify-between group">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-10 h-10 rounded-xl bg-blue-600/10 border border-blue-500/30 flex items-center justify-center text-blue-400 font-bold shadow-inner">
+                                    <i class="fa-brands fa-linkedin-in text-xl text-blue-400"></i>
+                                </div>
+                                <span class="text-xs font-mono text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded border border-blue-500/20">
+                                    nithin-myneni
+                                </span>
+                            </div>
+                            <h3 class="text-lg font-bold text-white group-hover:text-blue-300 transition-colors">
+                                LinkedIn
+                            </h3>
+                            <p class="text-xs text-slate-400 mt-1">
+                                Professional network, updates on hackathon wins, and engineering writings.
+                            </p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs text-blue-400 font-mono">
+                            <span>Connect</span>
+                            <i data-lucide="external-link" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </a>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- HONORS, AWARDS & CERTIFICATIONS SECTION                                   -->
+        <!-- ========================================================================= -->
+        <section id="awards" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-slate-800/40 relative">
+            <div class="max-w-6xl mx-auto">
+                
+                <!-- Section Title Header -->
+                <div class="text-center mb-16">
+                    <span class="text-xs font-mono font-semibold uppercase tracking-widest text-purple-400 bg-purple-950/60 px-3 py-1 rounded-full border border-purple-500/20">
+                        Achievements & Recognition
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mt-3">
+                        Honors, Certifications & Awards
+                    </h2>
+                    <p class="text-slate-400 text-sm sm:text-base max-w-xl mx-auto mt-2">
+                        National competitive exam rankings, inter-college contest wins, and verified industry credentials.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    
+                    <!-- Awards Box -->
+                    <div class="glass-card p-6 sm:p-8 rounded-2xl space-y-6">
+                        <h3 class="text-xl font-bold text-white flex items-center space-x-2.5">
+                            <i data-lucide="trophy" class="w-5 h-5 text-amber-400"></i>
+                            <span>Competitive Coding & Exam Honors</span>
+                        </h3>
+
+                        <div class="space-y-4">
+                            <!-- Honor 1 -->
+                            <div class="p-4 rounded-xl bg-dark-900/80 border border-slate-800/80 hover:border-purple-500/40 transition-colors">
+                                <div class="flex items-center justify-between mb-1">
+                                    <span class="font-bold text-white text-sm sm:text-base">1st Place in 4 Inter-College Contests</span>
+                                    <span class="text-xs font-mono text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20">1st Place</span>
+                                </div>
+                                <p class="text-xs sm:text-sm text-slate-400">
+                                    Championed competitive programming hackathons: <strong class="text-slate-200">SRK TechSpark</strong>, <strong class="text-slate-200">RVRJC Cognos</strong>, and <strong class="text-slate-200">SAHE Code Sprint</strong>.
+                                </p>
+                            </div>
+
+                            <!-- Honor 2 -->
+                            <div class="p-4 rounded-xl bg-dark-900/80 border border-slate-800/80 hover:border-purple-500/40 transition-colors">
+                                <div class="flex items-center justify-between mb-1">
+                                    <span class="font-bold text-white text-sm sm:text-base">GATE DA 2026 (Data Science & AI)</span>
+                                    <span class="text-xs font-mono text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded border border-purple-500/20">AIR ~3,600</span>
+                                </div>
+                                <p class="text-xs sm:text-sm text-slate-400">
+                                    Secured All India Rank ~3,600 with a score of <strong class="text-slate-200">466</strong> in the national GATE Data Science & Artificial Intelligence paper.
+                                </p>
+                            </div>
+
+                            <!-- Honor 3 -->
+                            <div class="p-4 rounded-xl bg-dark-900/80 border border-slate-800/80 hover:border-purple-500/40 transition-colors">
+                                <div class="flex items-center justify-between mb-1">
+                                    <span class="font-bold text-white text-sm sm:text-base">2,000+ Algorithmic Problems Solved</span>
+                                    <span class="text-xs font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">Top 1%</span>
+                                </div>
+                                <p class="text-xs sm:text-sm text-slate-400">
+                                    Consistently solved complex graph, DP, tree, and algorithmic challenges across LeetCode, Codeforces, CodeChef, and AtCoder.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Certifications Box -->
+                    <div class="glass-card p-6 sm:p-8 rounded-2xl space-y-6">
+                        <h3 class="text-xl font-bold text-white flex items-center space-x-2.5">
+                            <i data-lucide="award" class="w-5 h-5 text-purple-400"></i>
+                            <span>Industry & Academic Certifications</span>
+                        </h3>
+
+                        <div class="space-y-4">
+                            <!-- Cert 1 -->
+                            <div class="p-4 rounded-xl bg-dark-900/80 border border-slate-800/80 hover:border-purple-500/40 transition-colors flex items-start space-x-3.5">
+                                <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 shrink-0 mt-0.5">
+                                    <i data-lucide="cloud-check" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white text-sm sm:text-base">AWS Certified Cloud Practitioner</h4>
+                                    <p class="text-xs text-purple-300 font-mono mt-0.5">Amazon Web Services (AWS)</p>
+                                    <p class="text-xs text-slate-400 mt-1">
+                                        Validated expertise in cloud compute, storage, security, VPC networking, and cloud architectural best practices.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Cert 2 -->
+                            <div class="p-4 rounded-xl bg-dark-900/80 border border-slate-800/80 hover:border-purple-500/40 transition-colors flex items-start space-x-3.5">
+                                <div class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 shrink-0 mt-0.5">
+                                    <i data-lucide="check-circle" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white text-sm sm:text-base">NPTEL – Programming in Modern C++</h4>
+                                    <p class="text-xs text-purple-300 font-mono mt-0.5">National Programme on Technology Enhanced Learning</p>
+                                    <p class="text-xs text-slate-400 mt-1">
+                                        Advanced mastery in modern C++ (C++11/14/17/20), STL, smart pointers, templates, memory management, and concurrency.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Academic Distinction Note -->
+                            <div class="p-4 rounded-xl bg-purple-950/30 border border-purple-500/20 text-xs text-purple-200 leading-relaxed font-mono">
+                                💡 Dual degree candidate maintaining an <strong class="text-white">8.79 CGPA</strong> in B.Tech AI&ML and <strong class="text-white">7.73 CGPA</strong> in IIT Madras Data Science.
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- CONTACT & FOOTER SECTION                                                  -->
+        <!-- ========================================================================= -->
+        <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-slate-800/40 relative">
+            <div class="max-w-4xl mx-auto">
+                
+                <!-- Section Title Header -->
+                <div class="text-center mb-14">
+                    <span class="text-xs font-mono font-semibold uppercase tracking-widest text-purple-400 bg-purple-950/60 px-3 py-1 rounded-full border border-purple-500/20">
+                        Get in Touch
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mt-3">
+                        Let's Build Something High-Scale
+                    </h2>
+                    <p class="text-slate-400 text-sm sm:text-base max-w-lg mx-auto mt-2">
+                        I am actively open to discussing full-time software engineering roles, backend positions, and high-impact projects.
+                    </p>
+                </div>
+
+                <!-- Contact Card -->
+                <div class="glass-card p-6 sm:p-10 rounded-3xl border border-purple-500/30 shadow-2xl shadow-purple-950/60 relative overflow-hidden">
+                    <div class="absolute -right-20 -bottom-20 w-60 h-60 bg-purple-600/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                        
+                        <!-- Left Info -->
+                        <div class="space-y-6">
+                            <h3 class="text-2xl font-bold text-white">
+                                Contact Information
+                            </h3>
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                Feel free to reach out via email, phone, or LinkedIn. I typically reply within a few hours.
+                            </p>
+
+                            <div class="space-y-3.5 font-mono text-xs sm:text-sm">
+                                <!-- Email -->
+                                <div class="flex items-center justify-between p-3 rounded-xl bg-dark-900 border border-slate-800">
+                                    <div class="flex items-center space-x-3 text-slate-200">
+                                        <i data-lucide="mail" class="w-4 h-4 text-purple-400"></i>
+                                        <span class="truncate">nithinmyneni010@gmail.com</span>
+                                    </div>
+                                    <button onclick="copyToClipboard('nithinmyneni010@gmail.com', 'Email copied!')" class="text-purple-400 hover:text-white p-1" title="Copy email">
+                                        <i data-lucide="copy" class="w-4 h-4"></i>
+                                    </button>
+                                </div>
+
+                                <!-- Phone -->
+                                <div class="flex items-center justify-between p-3 rounded-xl bg-dark-900 border border-slate-800">
+                                    <div class="flex items-center space-x-3 text-slate-200">
+                                        <i data-lucide="phone" class="w-4 h-4 text-purple-400"></i>
+                                        <span>+91-6305155384</span>
+                                    </div>
+                                    <button onclick="copyToClipboard('+916305155384', 'Phone copied!')" class="text-purple-400 hover:text-white p-1" title="Copy phone">
+                                        <i data-lucide="copy" class="w-4 h-4"></i>
+                                    </button>
+                                </div>
+
+                                <!-- LinkedIn -->
+                                <div class="flex items-center justify-between p-3 rounded-xl bg-dark-900 border border-slate-800">
+                                    <div class="flex items-center space-x-3 text-slate-200">
+                                        <i class="fa-brands fa-linkedin-in text-blue-400 text-sm"></i>
+                                        <span>linkedin.com/in/nithin-myneni</span>
+                                    </div>
+                                    <a href="https://www.linkedin.com/in/nithin-myneni" target="_blank" rel="noopener noreferrer" class="text-purple-400 hover:text-white p-1" title="Open LinkedIn">
+                                        <i data-lucide="external-link" class="w-4 h-4"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Direct Action -->
+                        <div class="flex flex-col justify-center space-y-4 bg-dark-900/90 p-6 rounded-2xl border border-slate-800/80">
+                            <h4 class="text-base font-bold text-white flex items-center space-x-2">
+                                <i data-lucide="zap" class="w-4 h-4 text-purple-400"></i>
+                                <span>Quick Dispatch</span>
+                            </h4>
+                            <p class="text-xs text-slate-400">
+                                Launch your default mail client directly with a pre-filled subject line.
+                            </p>
+                            
+                            <a href="mailto:nithinmyneni010@gmail.com?subject=Opportunity%20Discussion%20-%20Nithin%20Myneni" class="w-full text-center py-3 rounded-xl glow-button text-white font-semibold text-sm flex items-center justify-center space-x-2">
+                                <i data-lucide="mail" class="w-4 h-4"></i>
+                                <span>Send Direct Email</span>
+                            </a>
+
+                            <div class="text-center pt-2">
+                                <span class="text-[11px] font-mono text-slate-500">
+                                    Location: India (Open to Remote & Relocation)
+                                </span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Footer Bottom -->
+                <footer class="mt-16 pt-8 border-t border-slate-900 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 font-mono gap-4">
+                    <div>
+                        © 2026 Nithin Venkata Sai Myneni. Crafted with Black & Purple Dark Minimalist UI.
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <a href="#hero" class="hover:text-purple-400 transition-colors flex items-center gap-1">
+                            <span>Back to top</span>
+                            <i data-lucide="arrow-up" class="w-3.5 h-3.5"></i>
+                        </a>
+                    </div>
+                </footer>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Interactive JavaScript -->
+    <script>
+        // Initialize Lucide Icons
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            initDynamicRoleTyping();
+            initCanvasBackground();
+            initMobileMenu();
+        });
+
+        // Dynamic Rotating Typing Effect in Hero
+        function initDynamicRoleTyping() {
+            const roles = [
+                'Full Stack Engineer',
+                'Backend & Cloud Architect',
+                'FastAPI & Microservices Specialist',
+                'Competitive Programmer (2000+ Solved)',
+                'IIT Madras Data Science Student'
+            ];
+            
+            const roleElement = document.getElementById('role-text');
+            if (!roleElement) return;
+
+            let roleIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+            const typingSpeed = 90;
+            const pauseTime = 1800;
+
+            function type() {
+                const currentRole = roles[roleIndex];
+                
+                if (isDeleting) {
+                    roleElement.textContent = currentRole.substring(0, charIndex - 1);
+                    charIndex--;
+                } else {
+                    roleElement.textContent = currentRole.substring(0, charIndex + 1);
+                    charIndex++;
+                }
+
+                if (!isDeleting && charIndex === currentRole.length) {
+                    isDeleting = true;
+                    setTimeout(type, pauseTime);
+                    return;
+                }
+
+                if (isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    roleIndex = (roleIndex + 1) % roles.length;
+                    setTimeout(type, 350);
+                    return;
+                }
+
+                const speed = isDeleting ? 45 : typingSpeed;
+                setTimeout(type, speed);
+            }
+
+            type();
+        }
+
+        // Interactive Constellation / Particle Background Canvas
+        function initCanvasBackground() {
+            const canvas = document.getElementById('bg-canvas');
+            if (!canvas) return;
+
+            const ctx = canvas.getContext('2d');
+            let width = (canvas.width = window.innerWidth);
+            let height = (canvas.height = window.innerHeight);
+
+            const particles = [];
+            const particleCount = Math.min(Math.floor(window.innerWidth / 20), 65);
+
+            for (let i = 0; i < particleCount; i++) {
+                particles.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    vx: (Math.random() - 0.5) * 0.4,
+                    vy: (Math.random() - 0.5) * 0.4,
+                    radius: Math.random() * 1.6 + 0.6,
+                    alpha: Math.random() * 0.5 + 0.2
+                });
+            }
+
+            let mouseX = -1000;
+            let mouseY = -1000;
+
+            window.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+            });
+
+            window.addEventListener('resize', () => {
+                width = canvas.width = window.innerWidth;
+                height = canvas.height = window.innerHeight;
+            });
+
+            function render() {
+                ctx.clearRect(0, 0, width, height);
+
+                // Update and draw particles
+                for (let i = 0; i < particles.length; i++) {
+                    const p = particles[i];
+
+                    p.x += p.vx;
+                    p.y += p.vy;
+
+                    if (p.x < 0) p.x = width;
+                    if (p.x > width) p.x = 0;
+                    if (p.y < 0) p.y = height;
+                    if (p.y > height) p.y = 0;
+
+                    // Draw dot
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(168, 85, 247, ${p.alpha})`;
+                    ctx.fill();
+
+                    // Connect nearby particles
+                    for (let j = i + 1; j < particles.length; j++) {
+                        const p2 = particles[j];
+                        const dx = p.x - p2.x;
+                        const dy = p.y - p2.y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+
+                        if (dist < 130) {
+                            ctx.beginPath();
+                            ctx.moveTo(p.x, p.y);
+                            ctx.lineTo(p2.x, p2.y);
+                            const lineAlpha = (1 - dist / 130) * 0.15;
+                            ctx.strokeStyle = `rgba(147, 51, 234, ${lineAlpha})`;
+                            ctx.lineWidth = 0.75;
+                            ctx.stroke();
+                        }
+                    }
+
+                    // Connect to mouse if near
+                    const mdx = p.x - mouseX;
+                    const mdy = p.y - mouseY;
+                    const mdist = Math.sqrt(mdx * mdx + mdy * mdy);
+                    if (mdist < 140) {
+                        ctx.beginPath();
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(mouseX, mouseY);
+                        const mAlpha = (1 - mdist / 140) * 0.3;
+                        ctx.strokeStyle = `rgba(192, 132, 252, ${mAlpha})`;
+                        ctx.lineWidth = 1;
+                        ctx.stroke();
+                    }
+                }
+
+                requestAnimationFrame(render);
+            }
+
+            render();
+        }
+
+        // Mobile Menu Toggle
+        function initMobileMenu() {
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            const links = document.querySelectorAll('.mobile-nav-link');
+
+            if (!menuBtn || !menu) return;
+
+            menuBtn.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+            });
+
+            links.forEach(link => {
+                link.addEventListener('click', () => {
+                    menu.classList.add('hidden');
+                });
+            });
+        }
+
+        // Toast Copy Notification
+        window.copyToClipboard = function(text, message = 'Copied to clipboard!') {
+            navigator.clipboard.writeText(text).then(() => {
+                const toast = document.getElementById('toast');
+                const toastMsg = document.getElementById('toast-message');
+                if (!toast || !toastMsg) return;
+
+                toastMsg.textContent = message;
+                toast.classList.add('show');
+
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 3000);
+            }).catch(err => {
+                console.error('Could not copy text: ', err);
+            });
+        };
+    </script>
+</body>
+</html>
